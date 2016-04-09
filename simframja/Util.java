@@ -1,0 +1,29 @@
+package simframja;
+
+public class Util {
+    
+    private Util() {}
+    
+    public static final Vector2
+        UP    = new Vector2(0, -1),
+        DOWN  = new Vector2(0, 1),
+        LEFT  = new Vector2(-1, 0),
+        RIGHT = new Vector2(1, 0);
+    
+    // Returns random double on [0,1]
+    public static double rn() {
+        return Math.random();
+    }
+    
+    // Returns random double on [0,range]
+    public static double rin(double range) {
+        return rn() * range;
+    }
+    
+    // Returns x with random sign
+    public static double rsign(double x) {
+        if (rn() > 0.5) return x;
+        return -x;
+    }
+    
+}
