@@ -15,6 +15,11 @@ public interface Entity extends Spatial, Mobile, Visual {
     manageCollisionsAndGetContacts(Collection<? extends Entity> context);
     
     
+    void setVelocity(Vector2 v);
+    
+    Vector2 getVelocity();
+    
+    
     double getHealth();
     
     void setHealth(double h);

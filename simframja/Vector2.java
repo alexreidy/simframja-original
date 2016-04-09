@@ -63,6 +63,11 @@ public class Vector2 implements Mobile {
         return new Vector2(x, y);
     }
     
+    public void setValuesTo(Vector2 v) {
+        x = v.x;
+        y = v.y;
+    }
+    
     public Vector2 recycledCopy() {
         recycledCopy.x = x;
         recycledCopy.y = y;

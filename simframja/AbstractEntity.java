@@ -11,6 +11,8 @@ public abstract class AbstractEntity implements Entity {
     
     private Vector2 position = new Vector2();
     
+    private Vector2 velocity = new Vector2();
+    
     private double health = 100;
     
     private boolean lifespanSet = false;
@@ -81,6 +83,16 @@ public abstract class AbstractEntity implements Entity {
     @Override
     public void move(Vector2 offset) {
         move(offset.x, offset.y);
+    }
+    
+    @Override
+    public void setVelocity(Vector2 v) {
+        velocity.setValuesTo(v);
+    }
+    
+    @Override
+    public Vector2 getVelocity() {
+        return velocity.recycledCopy();
     }
     
     @Override
@@ -155,8 +167,11 @@ public abstract class AbstractEntity implements Entity {
     @Override
     public void update(Collection<? extends Entity> context) {
         if (lifespanSet && updateCount++ >= lifespanUpdates) {
-            die();
+            die(); return;
         }
+        
+        move(velocity);
+        manageCollisionsAndGetContacts(context);
     }
     
     @Override

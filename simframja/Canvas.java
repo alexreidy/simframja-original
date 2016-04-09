@@ -12,8 +12,6 @@ import java.util.List;
 
 public class Canvas extends JPanel {
     
-    //private Visual[] visuals;
-    
     private List<? extends Visual> visuals;
         
     private JFrame window;
@@ -57,12 +55,6 @@ public class Canvas extends JPanel {
     }
     
     public void render() { repaint(); }
-    
-    /*
-    public synchronized void render(Visual[] visuals) {
-        this.visuals = visuals;
-        render();
-    }*/
     
     public synchronized void render(List<? extends Visual> visuals) {
         this.visuals = new ArrayList<Visual>(visuals);
