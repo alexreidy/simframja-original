@@ -15,11 +15,16 @@ public abstract class AbstractEntity implements Entity {
     
     private double health = 100;
     
+    /** The number of updates in the Entity's lifespan */
+    private int lifespanUpdates = 0;
+    
     private boolean lifespanSet = false;
+            
+    private int updateCount = 0;
     
-    private int lifespanUpdates = 0, updateCount = 0;
+    private Entity groupId = this;
     
-    Entity groupId = this;
+    private boolean killed = false;
         
     @Override
     public void setPosition(double x, double y) {
@@ -100,8 +105,10 @@ public abstract class AbstractEntity implements Entity {
         return Collections.emptyList();
     }
     
+    @Override
     public void collideWith(Entity e) {}
     
+    @Override
     public Collection<? extends Entity>
     manageCollisionsAndGetContacts(Collection<? extends Entity> context) {
         List<Entity> contacts = new ArrayList<>();
@@ -150,12 +157,13 @@ public abstract class AbstractEntity implements Entity {
     
     @Override
     public void die() {
-        health = 0;
+        killed = true;
+        setHealth(0);
     }
     
     @Override
     public boolean isAlive() {
-        return health > 0;
+        return !killed && health > 0;
     }
     
     @Override

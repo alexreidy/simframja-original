@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Iterator;
 import java.awt.Color;
-import java.awt.geom.Rectangle2D;
 
 import static simframja.Util.*;
 
@@ -15,11 +14,7 @@ public class Test {
         public MovingThing() {
             super(0,0, new Vector2(rsign(rin(5)), rsign(rin(5))), null);
             for (int i = 0; i < 9; i++) {
-                Rectangle2D shp = new Rectangle2D.Double();
-                shp.setFrame((int)(rsign(rin(30))), (int)(rsign(rin(30))), (int)(rin(15)), (int)(rin(15)));
-                ShapeEntity s = new MyRectangle(shp);
-                s.setPosition(rin(5), rin(5));
-                addEntity(s);
+                addEntity(new Rectangle(rin(20), rin(20), rin(10), rin(10), Color.GRAY));
             }
             setPosition(rin(700), rin(700));
         }
@@ -27,24 +22,6 @@ public class Test {
         @Override
         public void collideWith(Entity e) {
             die();
-        }
-        
-    }
-    
-    static class MyRectangle extends ShapeEntity {
-        public MyRectangle(Rectangle2D shape) {
-            addShape(shape);
-            setColor(Color.GRAY);
-        }
-
-        @Override
-        public void collideWith(Entity e) {
-            // TODO Auto-generated method stub
-            
-        }
-        
-        public boolean collisionsEnabled() {
-            return true;
         }
         
     }
