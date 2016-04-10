@@ -12,7 +12,7 @@ import java.util.List;
  * Implements VisualElement, and can thus be seen as a potentially complex
  * but unified shape of a single color. May or may not be tangible.
  */
-public class ShapeEntity extends AbstractEntity implements VisualElement, PotentialTangible {
+public class ShapeEntity extends AbstractEntity implements VisualElement {
     
     private final List<ShapeEntity> visualElementList = new ArrayList<>(1);
 
@@ -96,14 +96,10 @@ public class ShapeEntity extends AbstractEntity implements VisualElement, Potent
         }
     }
     
-    /**
-     * Set the tangibility status of the ShapeEntity.
-     */
     public void setTangible(boolean b) {
         tangible = b;
     }
-
-    @Override
+    
     public boolean isTangible() {
         return tangible;
     }

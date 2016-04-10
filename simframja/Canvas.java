@@ -90,7 +90,7 @@ public class Canvas extends JPanel {
      */
     public boolean contains(Vector2 point) {
         return point.x > 0 && point.x < getWidth() &&
-        	   point.y > 0 && point.y < getHeight();
+               point.y > 0 && point.y < getHeight();
     }
     
 }
