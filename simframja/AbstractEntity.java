@@ -7,6 +7,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Abstract base implementation of Entity.
+ */
 public abstract class AbstractEntity implements Entity {
     
     private Vector2 position = new Vector2();
@@ -174,12 +177,13 @@ public abstract class AbstractEntity implements Entity {
     
     @Override
     public void update(Collection<? extends Entity> context) {
+        move(velocity);
+        
+        manageCollisionsAndGetContacts(context);
+        
         if (lifespanSet && updateCount++ >= lifespanUpdates) {
             die(); return;
         }
-        
-        move(velocity);
-        manageCollisionsAndGetContacts(context);
     }
     
     @Override

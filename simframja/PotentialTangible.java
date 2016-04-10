@@ -1,6 +1,10 @@
 package simframja;
 
 /**
+ * Represents something, such as an entity, that can be considered
+ * definitively tangible or not. Things that are tangible are considered in
+ * methods like touching(), which ignore intangible objects.
+ * 
  * CompoundEntity constituent trees will typically "bottom out" with
  * PotentialTangible entities as leaves. This makes it possible for touching()
  * to work with compound entities that are only partially tangible.
@@ -11,6 +15,9 @@ package simframja;
  */
 public interface PotentialTangible {
     
+    /**
+     * Returns true if the object is tangible.
+     */
     boolean isTangible();
 
 }

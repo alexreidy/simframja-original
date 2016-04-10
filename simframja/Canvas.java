@@ -10,6 +10,9 @@ import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A JPanel designed for 2D graphics rendering.
+ */
 public class Canvas extends JPanel {
     
     /**

@@ -5,18 +5,35 @@ import java.util.List;
 import java.util.ArrayList;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * An AbstractEntity based on other constituent entities.
+ */
 public abstract class CompoundEntity extends AbstractEntity {
     
     private List<Entity> constituents = new ArrayList<>();
     
+    /**
+     * A cache of the constituent shapes.
+     * When it's not null, shapes() will assume that the cache is up to date and
+     * promptly return it. So when constituents are added or removed,
+     * it should be set to null to indicate that shapes must be consolidated
+     */
     private List<Rectangle2D> shapeCache = new ArrayList<>();
     
+    /**
+     * Adds a constituent Entity
+     * @param e the Entity to add
+     */
     public void addEntity(Entity e) {
         e.setGroupId(this.getGroupId());
         constituents.add(e);
         shapeCache = null;
     }
     
+    /**
+     * Removes a constituent Entity
+     * @param e the entity to remove
+     */
     public void removeEntity(Entity e) {
         e.setGroupId(e);
         constituents.remove(e);

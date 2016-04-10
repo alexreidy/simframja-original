@@ -1,7 +1,13 @@
 package simframja;
 
+/**
+ * A utility class for simframja.
+ */
 public class Util {
     
+    /**
+     * Not to be instantiated.
+     */
     private Util() {}
     
     public static final Vector2
@@ -10,17 +16,23 @@ public class Util {
         LEFT  = new Vector2(-1, 0),
         RIGHT = new Vector2(1, 0);
     
-    // Returns random double on [0,1]
+    /**
+     * Returns a random double on the interval [0,1].
+     */
     public static double rn() {
         return Math.random();
     }
     
-    // Returns random double on [0,range]
+    /**
+     * Returns a random double on the interval [0,range].
+     */
     public static double rin(double range) {
         return rn() * range;
     }
     
-    // Returns x with random sign
+    /**
+     * Returns x with a random sign.
+     */
     public static double rsign(double x) {
         if (rn() > 0.5) return x;
         return -x;

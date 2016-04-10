@@ -7,6 +7,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A concrete implementation of Entity comprised of Rectangle2D shapes.
+ * Implements VisualElement, and can thus be seen as a potentially complex
+ * but unified shape of a single color. May or may not be tangible.
+ */
 public class ShapeEntity extends AbstractEntity implements VisualElement, PotentialTangible {
     
     private final List<ShapeEntity> visualElementList = new ArrayList<>(1);
@@ -19,24 +24,40 @@ public class ShapeEntity extends AbstractEntity implements VisualElement, Potent
     
     Entity groupId;
     
+    /**
+     * Constructs a ShapeEntity with the given shapes and color.
+     */
     public ShapeEntity(List<Rectangle2D> shapes, Color color) {
         this.shapes = shapes; this.color = color;
         visualElementList.add(this);
     }
     
+    /**
+     * Constructs a ShapeEntity with the given shape and color.
+     */
     public ShapeEntity(Rectangle2D shape, Color color) {
         shapes.add(shape); this.color = color;
         visualElementList.add(this);
     }
     
+    /**
+     * Constructs a ShapeEntity without any initial shapes
+     * and without an initial color.
+     */
     public ShapeEntity() {
         visualElementList.add(this);
     }
     
+    /**
+     * Adds the given shape to the ShapeEntity.
+     */
     public void addShape(Rectangle2D s) {
         shapes.add(s);
     }
     
+    /**
+     * Sets the constituent shapes to the given List.
+     */
     public void setShapes(List<Rectangle2D> shapes) {
         this.shapes = shapes;
     }
@@ -46,6 +67,9 @@ public class ShapeEntity extends AbstractEntity implements VisualElement, Potent
         return shapes;
     }
     
+    /**
+     * Sets the color of the ShapeEntity.
+     */
     public void setColor(Color c) {
         color = c;
     }
@@ -72,6 +96,9 @@ public class ShapeEntity extends AbstractEntity implements VisualElement, Potent
         }
     }
     
+    /**
+     * Set the tangibility status of the ShapeEntity.
+     */
     public void setTangible(boolean b) {
         tangible = b;
     }
