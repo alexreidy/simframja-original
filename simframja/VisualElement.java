@@ -11,6 +11,8 @@ import java.awt.Color;
  */
 public interface VisualElement extends Visual, Spatial {
     
+    void setColor(Color c);
+    
     Color color();
     
 }

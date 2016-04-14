@@ -22,8 +22,6 @@ public class ShapeEntity extends AbstractEntity implements VisualElement {
     
     boolean tangible = true;
     
-    Entity groupId;
-    
     /**
      * Constructs a ShapeEntity with the given shapes and color.
      */
@@ -67,9 +65,7 @@ public class ShapeEntity extends AbstractEntity implements VisualElement {
         return shapes;
     }
     
-    /**
-     * Sets the color of the ShapeEntity.
-     */
+    @Override
     public void setColor(Color c) {
         color = c;
     }
@@ -108,16 +104,6 @@ public class ShapeEntity extends AbstractEntity implements VisualElement {
     public Collection<? extends Spatial> tangibles() {
         if (this.isTangible()) return visualElementList;
         return Collections.emptyList();
-    }
-
-    @Override
-    public void setGroupId(Entity id) {
-        groupId = id;
-    }
-
-    @Override
-    public Entity getGroupId() {
-        return groupId;
     }
 
 }

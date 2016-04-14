@@ -72,11 +72,9 @@ public abstract class AbstractEntity implements Entity {
     
     @Override
     public boolean touching(Spatial other) {
-        for (Spatial tangible : tangibles()) {
-            for (Spatial otherTangible : other.tangibles()) {
-                if (tangible.intersects(otherTangible)) {
-                    return true;
-                }
+        for (Spatial otherTangible : other.tangibles()) {
+            if (this.intersects(otherTangible)) {
+                return true;
             }
         }
         return false;
@@ -179,10 +177,8 @@ public abstract class AbstractEntity implements Entity {
     public void update(Collection<? extends Entity> context) {
         move(velocity);
         
-        manageCollisionsAndGetContacts(context);
-        
         if (lifespanSet && updateCount++ >= lifespanUpdates) {
-            die(); return;
+            die();
         }
     }
     

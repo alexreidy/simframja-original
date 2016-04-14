@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Iterator;
 import java.awt.Color;
+import java.awt.Point;
 
 import static simframja.Util.*;
 
@@ -17,6 +18,7 @@ public class Test {
                 addEntity(new Rectangle(rin(20), rin(20), rin(10), rin(10), Color.GRAY));
             }
             setPosition(rin(700), rin(700));
+            
         }
         
         @Override
@@ -28,10 +30,16 @@ public class Test {
     
     private static void spawn(int n, List<Entity> l) {
         for (int i = 0; i < n; i++) {
-            l.add(new MovingThing());
+            Projectile mt = new MovingThing();
+            mt.seek(mposVec, 12);
+            l.add(mt);
         }
     }
 
+    static Point mpos = new Point();
+    
+    static Vector2 mposVec = new Vector2();
+    
     public static void main(String[] args) {
         Canvas canvas = new Canvas(800, 700);
         canvas.displayInWindow("simframja");
@@ -43,6 +51,11 @@ public class Test {
         long st = System.currentTimeMillis();
         
         while (true) {
+            Point mp = canvas.getMousePosition();
+            if (mp != null) mpos = mp;
+            mposVec.x = mpos.x;
+            mposVec.y = mpos.y;
+            
             for (Iterator<Entity> it = things.iterator(); it.hasNext(); ) {
                 Entity s = it.next();
                 s.update(things);
